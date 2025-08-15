@@ -1,0 +1,36 @@
+Soru 1: Invoice Tablosu 
+Soru: 
+ “USA” ülkesine ait, 2009 yılı içerisinde oluşturulmuş tüm faturaların (Invoice) toplamını listeleyen bir sorgu yazınız.    
+Kullanılacak Tablo: 
+● invoice 
+
+** Soru 1 sql dosyasındaki cevapta toplam tutar adıyla invoice tablosundaki total stununu getiriyoruz. 
+daha sonra where ile kısıtlarımızı yazıyoruz. billing country USA bir de year from ile 2009 yılını getiriyoruz.
+
+Soru 2: Track, PlaylistTrack ve Playlist Tablolarında JOIN 
+Soru: 
+ Tüm parça (track) bilgilerini, bu parçaların ait olduğu playlisttrack ve playlist tablolarıyla birleştirerek (JOIN) listeleyen bir sorgu yazınız. 
+Kullanılacak Tablolar: 
+● track 
+● playlisttrack 
+● playlist 
+
+** soru 2 cevabında ana tablomuz track. Buradaki t bir takma ad (alias) olup sorguda track. yerine t. yazarak daha kısa yazıyoruz. 
+track tablosunu playlisttrack tablosu ile track_id üzerinden INNER JOIN ile birleştiriyoruz, bu tablo şarkılar ile çalma listeleri 
+arasındaki ilişkiyi tutmamıza yarıyor. INNER JOIN olduğu için sadece en az bir çalma listesinde yer alan şarkılar gelir. Ardından playlisttrack
+tablosunu playlist tablosu ile playlist_id üzerinden INNER JOIN yapıyoruz, böylece çalma listelerinin adlarını da alıyoruz.
+Sonuçta şarkı bilgileriyle beraber hangi çalma listesinde olduklarını görüyoruz.
+ORDER BY ile önce şarkı id’sine sonra çalma listesi id’sine göre sıralıyoruz.
+
+Soru 3: Track, Album ve Artist Tablolarında JOIN 
+Soru: 
+ "Let There Be Rock" adlı albüme ait tüm parçaları (Track) listeleyen, sanatçı (Artist) bilgisini de içeren bir sorgu yazınız. Ayrıca, sonuçları parça süresi (milliseconds) büyükten küçüğe sıralayınız. 
+Kullanılacak Tablolar: 
+● track 
+● album 
+● artist
+
+** soru 3 sql dosyasındaki cevapta da ana tablomuz track ve t olarak takma ad verdik. diğer tablolara da aynı şekilde alias ekledik. 
+track tablosunu album tablosu ile album_id üzerinden INNER JOIN yapıyoruz. Sonra album tablosunu artist tablosu ile artist_id üzerinden INNER JOIN yapıyoruz.
+WHERE ile sadece “Let There Be Rock” albümündeki parçaları filtreliyoruz. SELECT kısmında parça id’si, parça adı, süresi, albüm adı ve sanatçı adını getiriyoruz.
+ORDER BY ile parça süresine göre büyükten küçüğe sıralıyoruz.
